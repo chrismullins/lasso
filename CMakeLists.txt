@@ -86,9 +86,21 @@ target_link_libraries(iRel
   ${iRel_LINK_LIBS}
 )
 
+include(LassoTargets.cmake)
+set(CMAKE_INSTALL_INCLUDE_DIR
+  "${CMAKE_INSTALL_PREFIX}/include")
+set(CMAKE_INSTALL_LIB_DIR
+  "${CMAKE_INSTALL_PREFIX}/lib")
+set(CMAKE_INSTALL_LIBS "iRel")
+
 configure_file(
   ${CMAKE_SOURCE_DIR}/iRel-Defs.inc.in
   ${CMAKE_BINARY_DIR}/iRel-Defs.inc
+  )
+
+configure_file(
+  ${CMAKE_SOURCE_DIR}/LassoConfig.cmake.in
+  ${CMAKE_BINARY_DIR}/LassoConfig.cmake
   )
 
 file(GLOB lasso_cpp_headers
@@ -100,4 +112,9 @@ install(FILES ${lasso_cpp_headers}
 install(TARGETS iRel
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
   )
-
+install(FILES ${CMAKE_BINARY_DIR}/iRel-Defs.inc
+  DESTINATION lib
+  )
+install(FILES ${CMAKE_BINARY_DIR}/LassoConfig.cmake
+  DESTINATION include
+  )
