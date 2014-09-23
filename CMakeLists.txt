@@ -86,3 +86,18 @@ target_link_libraries(iRel
   ${iRel_LINK_LIBS}
 )
 
+configure_file(
+  ${CMAKE_SOURCE_DIR}/iRel-Defs.inc.in
+  ${CMAKE_BINARY_DIR}/iRel-Defs.inc
+  )
+
+file(GLOB lasso_cpp_headers
+  "${CMAKE_SOURCE_DIR}/*.hpp")
+install(FILES ${lasso_cpp_headers}
+              ${iRel_HEADERS}
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+  )
+install(TARGETS iRel
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  )
+
