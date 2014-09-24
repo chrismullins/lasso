@@ -93,6 +93,8 @@ set(CMAKE_INSTALL_LIB_DIR
   "${CMAKE_INSTALL_PREFIX}/lib")
 set(CMAKE_INSTALL_LIBS "iRel")
 
+set(IREL_INCLUDEDIR "${CMAKE_INSTALL_PREFIX}/include")
+set(IREL_LIBDIR "${CMAKE_INSTALL_PREFIX}/lib")
 configure_file(
   ${CMAKE_SOURCE_DIR}/iRel-Defs.inc.in
   ${CMAKE_BINARY_DIR}/iRel-Defs.inc
